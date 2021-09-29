@@ -1,0 +1,23 @@
+---
+- name: "Add only office apt key"
+  apt_key:
+    keyserver: "hkp://keyserver.ubuntu.com:80"
+    id: CB2DE8E5
+    state: present
+
+- name: "Add only office ppa"
+  apt_repository:
+    repo: "deb https://download.onlyoffice.com/repo/debian squeeze main"
+    update_cache: yes
+
+- name: "Install mscore fonts"
+  package:
+    name: ttf-mscorefonts-installer
+    state: present
+
+- name: "Install only office"
+  vars:
+    password: "{{ db_password }}"
+  package:
+    name: onlyoffice-documentserver-de
+    state: present

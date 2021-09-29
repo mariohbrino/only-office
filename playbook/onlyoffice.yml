@@ -1,0 +1,10 @@
+---
+- name: Deploy lemp server for laravel
+  hosts: all
+  roles:
+    - { role: common,       tags: common      }
+    - { role: postgres,     tags: postgres    }
+    - { role: redis,        tags: redis       }
+    - { role: rabbitmq,     tags: rabbitmq    }
+    - { role: nginx,        tags: nginx       }
+    - { role: onlyoffice,   tags: onlyoffice  }
