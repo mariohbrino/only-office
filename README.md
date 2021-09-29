@@ -1,8 +1,14 @@
-# Only Office Docs Development installation
+# Only Office Docs Developer Edition
 
 Developer Edition allows you to install ONLYOFFICE Docs on your local server and integrate online editors with your web application.
 
 [Documentation](https://helpcenter.onlyoffice.com/installation/docs-developer-install-ubuntu.aspx)
+
+## Requirements
+
+* Ubuntu Server 20.04
+* Ansible 2.9.6
+* Community Postgresql
 
 ## Initial settings
 
@@ -54,14 +60,34 @@ Host alias
 
 ## Usage and information
 
-Install only office in your ubuntu server 20.04, add **flag** `-K` in case the user has a password
+Install only office on ubuntu server 20.04, add **flag** `-K` in case the user has a password
 ```bash
 ansible-playbook -i inventory/onlyoffice.yml playbooks/onlyoffice.yml
 ```
 
-## License
+### Tags
+
+Using tags helps to define which roles will be selected or skipped
+
+Run only tags with tags `postgres` and `onlyoffice`
+
+```bash
+ansible-playbook -i inventory/onlyoffice.yml playbooks/onlyoffice.yml --tags "postgres,onlyoffice"
+```
+
+Run all tasks except those with the tags `nginx` and `redis`
+
+```bash
+ansible-playbook -i inventory/onlyoffice.yml playbooks/onlyoffice.yml --skip-tags "nginx,redis"
+```
+
+## Adding license
 
 Copy the product license to Data folder
 ```bash
 cp ./license.lic /var/www/onlyoffice/Data
 ```
+
+## License
+
+[MIT license](http://opensource.org/licenses/MIT).
