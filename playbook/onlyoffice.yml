@@ -1,5 +1,5 @@
 ---
-- name: Deploy lemp server for laravel
+- name: "Deploy only office server"
   hosts: all
   roles:
     - { role: common,       tags: common      }
