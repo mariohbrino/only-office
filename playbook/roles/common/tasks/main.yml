@@ -1,5 +1,5 @@
 ---
-- name: Install commun dependencies
+- name: "Install commun dependencies"
   apt:
     pkg:
       - python3-minimal

@@ -1,5 +1,5 @@
 ---
-- name: Install postgres server
+- name: "Install postgres server"
   apt:
     pkg:
       - postgresql
@@ -8,14 +8,14 @@
     force: yes
     update_cache: true
 
-- name: Create only office user
+- name: "Create only office user"
   become: yes
   become_user: postgres
   community.postgresql.postgresql_user:
     name: "{{ db_user }}"
     password: "{{ db_password }}"
 
-- name: Create the database specified in vars
+- name: "Create the database specified in vars"
   become: yes
   become_user: postgres
   community.postgresql.postgresql_db:
@@ -24,7 +24,7 @@
     template: 'template0'
     state: present
 
-- name: Ensure user has access to the new database
+- name: "Ensure user has access to the new database"
   become: yes
   become_user: postgres
   community.postgresql.postgresql_user:
@@ -34,7 +34,7 @@
     priv: ALL
     state: present
 
-- name: Ensure user does not have unnecessary permissions
+- name: "Ensure user does not have unnecessary permissions"
   become: yes
   become_user: postgres
   community.postgresql.postgresql_user:
