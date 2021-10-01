@@ -76,6 +76,17 @@ vars:
   ansible_connection: 'local'
 ```
 
+### Remote ssh connection
+
+Change on `inventory/onlyoffice.yml` the variable `ansible_host` and add `ansible_ssh_private_key_file`
+```bash
+hosts:
+  onlyoffice:
+    ansible_host: '<ip-address>'
+vars:
+  ansible_ssh_private_key_file: '/path/to/your/ssh-key'
+```
+
 ### Tags
 
 Using tags helps to define which roles will be selected or skipped
