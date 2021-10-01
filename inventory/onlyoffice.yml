@@ -7,7 +7,7 @@ all:
     ansible_user: "{{ username }}"
     ansible_become: 'yes'
     ansible_become_method: 'sudo'
-    ansible_ssh_connection: 'ssh'
+    ansible_connection: 'ssh'
     ansible_ssh_pipelining: true
     ansible_python_interpreter: /usr/bin/python3
     db_user: onlyoffice

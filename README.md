@@ -62,7 +62,18 @@ Host alias
 
 Install only office on ubuntu server 20.04, add **flag** `-K` in case the user has a password
 ```bash
-ansible-playbook -i inventory/onlyoffice.yml playbooks/onlyoffice.yml
+ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml
+```
+
+### Run on localhost
+
+Change on `inventory/onlyoffice.yml` the variables
+```bash
+hosts:
+  onlyoffice:
+    ansible_host: 'localhost'
+vars:
+  ansible_connection: 'local'
 ```
 
 ### Tags
@@ -72,13 +83,13 @@ Using tags helps to define which roles will be selected or skipped
 Run only tags with tags `postgres` and `onlyoffice`
 
 ```bash
-ansible-playbook -i inventory/onlyoffice.yml playbooks/onlyoffice.yml --tags "postgres,onlyoffice"
+ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml --tags "postgres,onlyoffice"
 ```
 
 Run all tasks except those with the tags `nginx` and `redis`
 
 ```bash
-ansible-playbook -i inventory/onlyoffice.yml playbooks/onlyoffice.yml --skip-tags "nginx,redis"
+ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml --skip-tags "nginx,redis"
 ```
 
 ## Adding license
