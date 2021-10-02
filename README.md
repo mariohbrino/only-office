@@ -12,16 +12,23 @@ Developer Edition allows you to install ONLYOFFICE Docs on your local server and
 
 ## Initial settings
 
-Change `username` and `ansible_host` on `inventory/onlyoffice.yml` **hosts** and **vars** with your hostname and username
+Define the variables on `inventory/onlyoffice.yml` as per your needs
+
+Change variables on `inventory/onlyoffice.yml`
 ```bash
-hosts:
-  onlyoffice:
-    ansible_host: '<hostname>'
-vars:
-  username: '<username>'
+ansible_host: '<hostname>'
+username: '<username>'
 ```
 
-> hostname can be a name like localhost or an ip address
+Ansible connection can be set as `local` or `ssh`
+```bash
+ansible_connection: '<connection>'
+```
+
+SSH private key file needs to be defined when using `ssh` connection
+```bash
+ansible_ssh_private_key_file: /path/to/your/ssh-key
+```
 
 Install `ansible` in your system
 ```bash
@@ -63,28 +70,6 @@ Host alias
 Install only office on ubuntu server 20.04, add **flag** `-K` in case the user has a password
 ```bash
 ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml
-```
-
-### Run on localhost
-
-Change on `inventory/onlyoffice.yml` the variables
-```bash
-hosts:
-  onlyoffice:
-    ansible_host: 'localhost'
-vars:
-  ansible_connection: 'local'
-```
-
-### Remote ssh connection
-
-Change on `inventory/onlyoffice.yml` the variable `ansible_host` and add `ansible_ssh_private_key_file`
-```bash
-hosts:
-  onlyoffice:
-    ansible_host: '<ip-address>'
-vars:
-  ansible_ssh_private_key_file: '/path/to/your/ssh-key'
 ```
 
 ### Tags
