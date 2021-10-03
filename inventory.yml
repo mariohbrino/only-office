@@ -1,7 +1,7 @@
 all:
   hosts:
     onlyoffice:
-      ansible_host: '<ip-address>'
+      ansible_host: '<hostname>'
   vars:
     username: '<username>'
     ansible_user: "{{ username }}"

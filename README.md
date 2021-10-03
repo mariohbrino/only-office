@@ -12,9 +12,9 @@ Developer Edition allows you to install ONLYOFFICE Docs on your local server and
 
 ## Initial settings
 
-Define the variables on `inventory/onlyoffice.yml` as per your needs
+Define the variables on `inventory.yml` as per your needs
 
-Change variables on `inventory/onlyoffice.yml`
+Change variables on `inventory.yml`
 ```bash
 ansible_host: '<hostname>'
 username: '<username>'
@@ -46,7 +46,7 @@ ansible-galaxy collection install community.postgresql
 
 Change ssh-key permissions
 ```bash
-chmod 400 ~/.ssh/<ssh_key>
+chmod 400 ~/.ssh/<ssh-key>
 ```
 
 Configure ssh config file
@@ -58,10 +58,10 @@ chmod 600 ~/.ssh/config
 SSH config file sample
 ```bash
 Host alias
-  HostName <ip_address>
+  HostName <ip-address>
   User <username>
   Port 22
-  IdentityFile ~/.ssh/<ssh_key>
+  IdentityFile ~/.ssh/<ssh-key>
 
 ```
 
@@ -69,8 +69,10 @@ Host alias
 
 Install only office on ubuntu server 20.04, add **flag** `-K` in case the user has a password
 ```bash
-ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml
+ansible-playbook -i inventory.yml onlyoffice.yml
 ```
+
+> Access onlyoffice [localhost](http://localhost) or `hostname`
 
 ### Tags
 
@@ -79,13 +81,13 @@ Using tags helps to define which roles will be selected or skipped
 Run only tags with tags `postgres` and `onlyoffice`
 
 ```bash
-ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml --tags "postgres,onlyoffice"
+ansible-playbook -i inventory.yml onlyoffice.yml --tags "postgres,onlyoffice"
 ```
 
 Run all tasks except those with the tags `nginx` and `redis`
 
 ```bash
-ansible-playbook -i inventory/onlyoffice.yml playbook/onlyoffice.yml --skip-tags "nginx,redis"
+ansible-playbook -i inventory.yml onlyoffice.yml --skip-tags "nginx,redis"
 ```
 
 ## Adding license
