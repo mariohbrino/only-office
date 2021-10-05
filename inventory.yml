@@ -1,13 +1,13 @@
 all:
   hosts:
     onlyoffice:
-      ansible_host: '<hostname>'
+      ansible_host: <hostname>
   vars:
-    username: '<username>'
+    username: <username>
     ansible_user: "{{ username }}"
-    ansible_become: 'yes'
-    ansible_become_method: 'sudo'
-    ansible_connection: 'ssh'
+    ansible_become: yes
+    ansible_become_method: sudo
+    ansible_connection: ssh
     ansible_ssh_pipelining: true
     ansible_python_interpreter: /usr/bin/python3
     db_user: onlyoffice

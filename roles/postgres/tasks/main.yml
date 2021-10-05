@@ -11,14 +11,14 @@
 - name: "Create only office user"
   become: yes
   become_user: postgres
-  community.postgresql.postgresql_user:
+  postgresql_user:
     name: "{{ db_user }}"
     password: "{{ db_password }}"
 
 - name: "Create the database specified in vars"
   become: yes
   become_user: postgres
-  community.postgresql.postgresql_db:
+  postgresql_db:
     name: "{{ db_name }}"
     owner: "{{ db_user }}"
     template: 'template0'
@@ -27,7 +27,7 @@
 - name: "Ensure user has access to the new database"
   become: yes
   become_user: postgres
-  community.postgresql.postgresql_user:
+  postgresql_user:
     db: "{{ db_name }}"
     name: "{{ db_user }}"
     password: "{{ db_password }}"
@@ -37,7 +37,7 @@
 - name: "Ensure user does not have unnecessary permissions"
   become: yes
   become_user: postgres
-  community.postgresql.postgresql_user:
+  postgresql_user:
     name: "{{ db_user }}"
     role_attr_flags: NOSUPERUSER,NOCREATEDB
     state: present

@@ -8,7 +8,6 @@ Developer Edition allows you to install ONLYOFFICE Docs on your local server and
 
 * Ubuntu Server 20.04
 * Ansible 2.9.6
-* Community Postgresql
 
 ## Initial settings
 
@@ -34,13 +33,7 @@ Install `ansible` in your system
 ```bash
 sudo apt -y install ansible
 ```
-
 > ansible version 2.9.6
-
-Install postgresql community plugin
-```bash
-ansible-galaxy collection install community.postgresql
-```
 
 ## Setup ssh config
 
@@ -62,7 +55,6 @@ Host alias
   User <username>
   Port 22
   IdentityFile ~/.ssh/<ssh-key>
-
 ```
 
 ## Usage and information
@@ -71,7 +63,6 @@ Install only office on ubuntu server 20.04, add **flag** `-K` in case the user h
 ```bash
 ansible-playbook -i inventory.yml onlyoffice.yml
 ```
-
 > Access onlyoffice [localhost](http://localhost) or `hostname`
 
 ### Tags
