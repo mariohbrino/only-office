@@ -12,4 +12,4 @@
       - python3-psycopg2
     state: present
     force: yes
-    update_cache: true
+    update_cache: yes

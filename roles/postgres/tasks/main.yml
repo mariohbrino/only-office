@@ -6,7 +6,7 @@
       - postgresql-contrib
     state: present
     force: yes
-    update_cache: true
+    update_cache: yes
 
 - name: "Create only office user"
   become: yes
