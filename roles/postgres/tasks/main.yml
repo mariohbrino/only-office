@@ -14,6 +14,7 @@
   postgresql_user:
     name: "{{ db_user }}"
     password: "{{ db_password }}"
+  no_log: true
 
 - name: "Create the database specified in vars"
   become: yes
@@ -33,6 +34,7 @@
     password: "{{ db_password }}"
     priv: ALL
     state: present
+  no_log: true
 
 - name: "Ensure user does not have unnecessary permissions"
   become: yes
@@ -41,3 +43,4 @@
     name: "{{ db_user }}"
     role_attr_flags: NOSUPERUSER,NOCREATEDB
     state: present
+  no_log: true
